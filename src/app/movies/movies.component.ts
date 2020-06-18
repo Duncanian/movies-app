@@ -17,7 +17,12 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.moviesService.getUpcomingMovies().subscribe(
       (response: UpcomingMoviesModel) => {
-        this.movies = response.results
+        this.movies = response.results.map(
+          (movie: Movie) => {
+            movie.favorite = !!this.moviesService.isFavorite(movie);
+            return movie;
+        });
+        this.moviesService.setMovies(response.results);
     });
   }
 }
