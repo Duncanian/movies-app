@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FavouriteMoviesComponent } from './favourite-movies/favourite-movies.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
     MovieListComponent,
-    FavouriteMoviesComponent
+    FavouriteMoviesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Movie DB</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li [ngClass]="activeLink === 'upcoming' ? 'active': ''">
+            <a routerLink="/upcoming"
+               (click)="onTabClick('upcoming')"
+            >Upcoming</a></li>
+        <li><a href="!#"></a></li>
+        <li [ngClass]="activeLink === 'favourite' ? 'active': ''">
+            <a routerLink="/favourite"
+               (click)="onTabClick('favourite')"
+            >Favourites</a></li>
+        </ul>
+    </div>
+</nav>
