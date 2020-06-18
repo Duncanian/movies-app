@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../environments/environment';
 import {UpcomingMoviesModel} from '../app/models/upcoming-movies.model';
 import {Movie} from '../app/models/movie.model';
-// import {MovieDetailModel} from '../app/models/movie-details.model';
+import {MovieDetailModel} from '../app/models/movie-details.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ import {Movie} from '../app/models/movie.model';
 export class MoviesService {
 
   private movies: Movie[] = [];
-  private favourites: Movie[] = this.movies.filter(
+  private favourites: Movie[] | MovieDetailModel[] | any[]= this.movies.filter(
     m => m.favorite === true,
   );
 
@@ -33,7 +33,11 @@ export class MoviesService {
     );
   }
 
-  setMovies(movies: Movie[]) {
+  getOneMovie(id: number) {
+    return this.http.get<MovieDetailModel>(`${this.baseURL}movie/${id}?api_key=${this.apiKey}`);
+  }
+
+  sortMovies(movies: Movie[]) {
     if (this.favourites.length > 0) {
         this.favourites.forEach(fav => {
           const movie = movies.find(
@@ -47,16 +51,11 @@ export class MoviesService {
     this.movies = movies;
   }
 
-  addMovie(movie: Movie) {
-    this.movies.push(...[movie]);
-  }
-
-
-  getFavorites() {
+  getAllFavorites() {
     return this.favourites.slice();
   }
 
-  isFavorite(movie: Movie ) {
+  isMyFavorite(movie: Movie | MovieDetailModel) {
     return this.favourites.find(
     (mov) => {
         return mov.id === movie.id;
@@ -64,8 +63,7 @@ export class MoviesService {
     );
   }
 
-  toggleFavorite(movie: Movie) {
-    // check here first
+  toggleFavorite(movie: any) {
     if ('genre_ids' in movie && this.movies.length) {
       // get equivalent movie from upcoming list
       const initialFav = movie.favorite;
@@ -86,7 +84,7 @@ export class MoviesService {
     this.moviesUpdated.emit(this.movies.slice());
   }
 
-  getImage(path: string, size: string) {
+  getMovieImage(path: string, size: string) {
     return this.baseImg + size + path;
   }
 }

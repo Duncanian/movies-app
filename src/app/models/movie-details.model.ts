@@ -7,7 +7,7 @@ export class MovieDetailModel {
   public backdrop_path: string;
   public belongs_to_collection: any;
   public budget: number;
-//   public genres: {id: number, name: string} [];
+  public genres: {id: number, name: string} [];
   public homepage: string;
   public id: number;
   public imdb_id: string;
@@ -28,7 +28,7 @@ export class MovieDetailModel {
   public video: boolean;
   public vote_average: number;
   public vote_count: number;
-//   public favorite?: boolean;
+  public favorite?: boolean;
 
   constructor(
     adult: boolean,
@@ -56,7 +56,7 @@ export class MovieDetailModel {
     video: boolean,
     vote_average: number,
     vote_count: number,
-    // favorite = false
+    favorite = false
   ) {
     this.backdrop_path = backdrop_path;
     this.budget = budget;
@@ -78,7 +78,7 @@ export class MovieDetailModel {
     this.runtime = runtime;
     this.spoken_languages = spoken_languages;
     this.status = status;
-    // this.favorite = favorite;
+    this.favorite = favorite;
     this.tagline = tagline;
     this.title = title;
     this.video = video;

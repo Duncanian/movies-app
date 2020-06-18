@@ -19,10 +19,10 @@ export class MoviesComponent implements OnInit {
       (response: UpcomingMoviesModel) => {
         this.movies = response.results.map(
           (movie: Movie) => {
-            movie.favorite = !!this.moviesService.isFavorite(movie);
+            movie.favorite = !!this.moviesService.isMyFavorite(movie);
             return movie;
         });
-        this.moviesService.setMovies(response.results);
+        this.moviesService.sortMovies(response.results);
     });
   }
 }

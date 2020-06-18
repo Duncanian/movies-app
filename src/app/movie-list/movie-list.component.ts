@@ -20,8 +20,12 @@ export class MovieListComponent implements OnInit {
     this.moviesService.toggleFavorite(this.movie);
   }
 
+  onClickLink(id: string) {
+    return `/movie/${id}`;
+  }
+
   onLoadImage(path: string, size: string) {
-    return this.moviesService.getImage(path, size);
+    return this.moviesService.getMovieImage(path, size);
   }
 
 }

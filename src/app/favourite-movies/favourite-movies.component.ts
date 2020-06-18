@@ -15,12 +15,12 @@ export class FavouriteMoviesComponent implements OnInit {
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
-    this.movies = this.moviesService.getFavorites();
+    this.movies = this.moviesService.getAllFavorites();
     this.moviesService.favoritesUpdated.subscribe(
       (ms: Movie[]) => {
         this.movies = ms.map(
           (movie) => {
-            movie.favorite = !!this.moviesService.isFavorite(movie);
+            movie.favorite = !!this.moviesService.isMyFavorite(movie);
             return movie;
         });
       }
