@@ -20,7 +20,7 @@ export class MovieListComponent implements OnInit {
     this.moviesService.toggleFavorite(this.movie);
   }
 
-  onClickLink(id: string) {
+  onClickLink(id: number) {
     return `/movie/${id}`;
   }
 

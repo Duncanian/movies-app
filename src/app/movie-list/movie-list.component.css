@@ -1,0 +1,20 @@
+.movie-list {
+    /* background-color: silver !important; */
+    border: 0.5px solid black;
+    height: 31em;
+}
+
+.movie-list-link a {
+    color: #fff !important;
+    background-color: black;
+    padding: 20px;
+    text-transform: capitalize !important;
+}
+
+.movie-list-link a:hover {
+    color: #000!important;
+    background: transparent;
+    padding: 19px;
+    border: 0.5px solid black;
+}
+

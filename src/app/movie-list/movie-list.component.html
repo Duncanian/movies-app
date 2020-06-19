@@ -1,17 +1,19 @@
-<div class="col s6 red">
-    <div class="card horizontal">
+<div class="col s6">
+    <div class="card horizontal movie-list">
         <div class="card-image">
             <img [src]="onLoadImage(movie.poster_path, 'original')" />
         </div>
-        <div class="card-stacked">
+        <div class="card-stacked movie-list-info">
             <span class="card-title">
                 {{movie.title}}
             </span>
             <p>{{movie.release_date}}</p>
             <div class="card-content">
-                <p>{{movie.overview}}</p>
+                <p>
+                    {{movie.overview.length <= 120 ? movie.overview :movie.overview.substr(0,120)+ '...'}}
+                </p>
             </div>
-            <div class="card-action">
+            <div class="card-action movie-list-link">
                 <a [routerLink]="onClickLink(movie.id)">View Details</a>
             </div>
         </div>
@@ -21,8 +23,8 @@
               d="M25.4,4.29a7.165,7.165,0,0,0-3.735-1.037,8.854,8.854,0,0,0-7.055,3.99l-.108.146-.108-.146a8.864,8.864,0,0,0-7.058-3.99A7.154,7.154,0,0,0,3.6,4.29C.211,6.352-1.71,11.433,2.08,17.714c.383.6,3.98,6.046,12.26,10.978a.3.3,0,0,0,.159.045.307.307,0,0,0,.161-.046c8.454-5.039,12.107-10.745,12.257-10.984C30.711,11.431,28.789,6.352,25.4,4.29Z"
               transform="translate(0.508 -2.753)"
               [ngStyle]="movie.favorite ?
-              {fill: '#7a7a7a', stroke: '#7a7a7a' , 'stroke-width': 1 } :
-              {fill: '#ffffff', stroke: '#7a7a7a', 'stroke-width': 2 }"
+              {fill: '#ee6e73', stroke: '#ee6e73' , 'stroke-width': 1 } :
+              {fill: '#ffffff', stroke: '#ee6e73', 'stroke-width': 2 }"
               />
           </svg>
     </div>
