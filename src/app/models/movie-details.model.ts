@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-// import {GenreModel} from "./genre.model";
+import {GenreModel} from "../models/gengre.model";
 
 export class MovieDetailModel {
   public adult: boolean;
@@ -35,7 +35,7 @@ export class MovieDetailModel {
     backdrop_path: string,
     belongs_to_collection: any,
     budget: number,
-    // genres: GenreModel [],
+    genres: GenreModel [],
     homepage: string,
     id: number,
     imdb_id: string,
@@ -62,7 +62,7 @@ export class MovieDetailModel {
     this.budget = budget;
     this.belongs_to_collection = belongs_to_collection;
     this.adult = adult;
-    // this.genres = genres;
+    this.genres = genres;
     this.homepage = homepage;
     this.id = id;
     this.imdb_id = imdb_id;
